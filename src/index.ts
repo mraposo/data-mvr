@@ -7,11 +7,12 @@ export default {
     const url = new URL(req.url);
 
     // Simpele router op basis van pathname
-    if (req.method === "GET" && url.pathname === "/users") {
-      const result = await env.DB.prepare("SELECT * FROM users").all();
+    if (req.method === "GET" && url.pathname === "/comments") {
+      const result = await env.DB.prepare("SELECT * FROM comments").all();
       return Response.json(result.results);
     }
 
+	/*
     if (req.method === "POST" && url.pathname === "/users") {
       const body = await req.json<{ name: string; email: string }>();
       await env.DB
@@ -20,7 +21,9 @@ export default {
         .run();
       return Response.json({ success: true }, { status: 201 });
     }
+	*/
 
+	
     return new Response("Not found", { status: 404 });
   },
 };
